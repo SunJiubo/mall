@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="add">
+        姓名:<input name="name"></br>
+        账号:<input name="account"></br>
+        密码:<input name="password"></br>
+        性别:<input name="sex"></br>
+        年龄:<input name="age"></br>
+        地址:<input name="address"></br>
+        邮箱:<input name="email"></br>
+        <input type="botton" value="提交" onclick="submit(this)">
+    </form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>

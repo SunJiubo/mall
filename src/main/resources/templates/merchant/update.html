@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="update">
+        <input name="id" th:value="${merchant.id}" type="hidden">
+        商家名称:<input name="merchantName" th:value="${merchant.getMerchantName()}"></br>
+        商家店铺名称:<input name="merchantShopName" th:value="${merchant.getMerchantShopName()}"></br>
+        商家账号:<input name="merchantAccount" th:value="${merchant.getMerchantAccount()}"></br>
+        商家密码:<input name="merchantPassword" th:value="${merchant.getMerchantPassword()}"></br>
+        商家经营范围:<input name="merchantScope" th:value="${merchant.getMerchantScope()}"></br>
+        <input type="botton" value="提交" onclick="submit(this)">
+    </form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="applymsproduct">
+        商品id:<input name="productId"></br>
+        商品标题:<input name="productTitle"></br>
+        商品图片地址:<input name="productPicture"></br>
+        秒杀价格:<input name="seckillPrice"></br>
+        商品原价:<input name="originalPrice"></br>
+        商家id:<input name="merchantId"></br>
+        秒杀开始时间:<input name="startTimeString"></br>
+        秒杀结束时间:<input name="endTimeString"></br>
+        秒杀商品数量:<input name="productCount"></br>
+        库存:<input name="stockCount"></br>
+        描述:<input name="description"></br>
+        <input type="botton" value="提交" onclick="submit(this)">
+    </form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>

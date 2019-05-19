@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center><a href="/user/toadd">添加用户</a> </center>
+<table border="2">
+    <tr>
+        <td>姓名</td>
+        <td>账号</td>
+        <td>密码</td>
+        <td>性别</td>
+        <td>年龄</td>
+        <td>地址</td>
+        <td>邮箱</td>
+    </tr>
+    <tr th:each="user:${list}">
+        <td th:utext="${user.getName()}" />,
+        <td th:utext="${user.getAccount()}" />,
+        <td th:utext="${user.getPassword()}" />,
+        <td th:utext="${user.getSex()}" />,
+        <td th:utext="${user.getAge()}" />,
+        <td th:utext="${user.getAddress()}" />,
+        <td th:utext="${user.getEmail()}" />
+        <td><a th:href="'/user/toupdate?id='+${user.getId()}">修改</a>||
+            <a th:href="'/user/del?id='+${user.getId()}">删除</a>||
+            <a th:href="'/user/querybyid?id='+${user.getId()}">查看</a> </td>
+    </tr>
+</table>
+</body>
+</html>

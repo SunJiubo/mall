@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        姓名:<a th:utext="${user.getName()}" /></br>
+        账号:<a th:utext="${user.getAccount()}" /></br>
+        密码:<a th:utext="${user.getPassword()}" /></br>
+        性别:<a th:utext="${user.getSex()}" /></br>
+        年龄:<a th:utext="${user.getAge()}" /></br>
+        地址:<a th:utext="${user.getAddress()}" /></br>
+        邮箱:<a th:utext="${user.getEmail()}" /></br>
+    </form>
+</body>
+</html>

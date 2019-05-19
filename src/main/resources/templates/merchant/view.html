@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        商家名称:<a th:utext="${merchant.getMerchantName()}" /></br>
+        商家店铺名称:<a th:utext="${merchant.getMerchantShopName()}"/></br>
+        商家账号:<a th:utext="${merchant.getMerchantAccount()}"/></br>
+        商家密码:<a th:utext="${merchant.getMerchantPassword()}"/></br>
+        商家经营范围:<a th:utext="${merchant.getMerchantScope()}"/></br>
+    </form>
+</body>
+</html>

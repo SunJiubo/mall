@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nineboy.seckill.dao.MerchantDAO">
+    <sql id="consutomsql">
+        <if test="merchantVO != null">
+            <if test="merchantVO.merchantName!=null and merchantVO.merchantName!=''">
+                and merchant_name = "${merchantVO.merchantName}"
+            </if>
+            <if test="merchantVO.merchantShopName!=null and merchantVO.merchantShopName!=''">
+                and merchant_shopname = "${merchantVO.merchantShopName}"
+            </if>
+            <if test="merchantVO.merchantAccount!=null and merchantVO.merchantAccount!=''">
+                and merchant_account = "${merchantVO.merchantAccount}"
+            </if>
+            <if test="merchantVO.merchantPassword!=null and merchantVO.merchantPassword!=''">
+                and merchant_password = "${merchantVO.merchantPassword}"
+            </if>
+            <if test="merchantVO.merchantScope!=null and merchantVO.merchantScope!=''">
+                and merchant_scope = "${merchantVO.merchantScope}"
+            </if>
+        </if>
+    </sql>
+    <insert id="insertMerchant" parameterType="com.nineboy.seckill.model.Merchant">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sk_merchant(merchant_name, merchant_shopname, merchant_account, merchant_password, merchant_scope)
+        value(#{merchant.merchantName},#{merchant.merchantShopName},#{merchant.merchantAccount},#{merchant.merchantPassword},#{merchant.merchantScope})
+    </insert>
+    
+    <select id="queryMerchantByVo" parameterType="com.nineboy.seckill.vo.MerchantVO" resultType="com.nineboy.seckill.model.Merchant">
+        select * from sk_merchant
+      <where>
+          <include refid="consutomsql" ></include>
+      </where>
+    </select>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nineboy.seckill.dao.ProductInfoDAO">
+    <sql id="consutomsql">
+        <if test="productInfoVO != null">
+            <if test="productInfoVO.productId!=null and productInfoVO.productId!=''">
+                and product_id = "${productInfoVO.productId}"
+            </if>
+            <if test="productInfoVO.productTitle!=null and productInfoVO.productTitle!=''">
+                and product_title like "%${productInfoVO.productTitle}%"
+            </if>
+            <if test="productInfoVO.startSeckillPrice!=null and productInfoVO.startSeckillPrice!=''">
+                and seckill_price &gt;= "${productInfoVO.startSeckillPrice}"
+            </if>
+            <if test="productInfoVO.endSeckillPrice!=null and productInfoVO.endSeckillPrice!=''">
+                and seckill_price &lt;= "${productInfoVO.endSeckillPrice}"
+            </if>
+            <if test="productInfoVO.startOriginalPrice!=null and productInfoVO.startOriginalPrice!=''">
+                and original_price &gt;= "${productInfoVO.startOriginalPrice}"
+            </if>
+            <if test="productInfoVO.endOriginalPrice!=null and productInfoVO.endOriginalPrice!=''">
+                and original_price &lt;= "${productInfoVO.endOriginalPrice}"
+            </if>
+            <if test="productInfoVO.merchantId!=null and productInfoVO.merchantId!=''">
+                and merchant_id = "${productInfoVO.merchantId}"
+            </if>
+            <if test="productInfoVO.startApplyDate!=null and productInfoVO.startApplyDate!=''">
+                and apply_date &gt;= "${productInfoVO.startApplyDate}"
+            </if>
+            <if test="productInfoVO.endApplyDate!=null and productInfoVO.endApplyDate!=''">
+                and apply_date &lt;= "${productInfoVO.endApplyDate}"
+            </if>
+            <if test="productInfoVO.startAuditDate!=null and productInfoVO.startAuditDate!=''">
+                and audit_date &gt;= "${productInfoVO.startAuditDate}"
+            </if>
+            <if test="productInfoVO.endAuditDate!=null and productInfoVO.endAuditDate!=''">
+                and audit_date &lt;= "${productInfoVO.endAuditDate}"
+            </if>
+            <if test="productInfoVO.auditState!=null and productInfoVO.auditState!=''">
+                and audit_state = "${productInfoVO.auditState}"
+            </if>
+            <if test="productInfoVO.startStartTime!=null and productInfoVO.startStartTime!=''">
+                and start_time &gt;= "${productInfoVO.startStartTime}"
+            </if>
+            <if test="productInfoVO.endStartTime!=null and productInfoVO.endStartTime!=''">
+                and start_time &lt;= "${productInfoVO.endStartTime}"
+            </if>
+            <if test="productInfoVO.startEndTime!=null and productInfoVO.startEndTime!=''">
+                and end_time &gt;= "${productInfoVO.startEndTime}"
+            </if>
+            <if test="productInfoVO.endEndTime!=null and productInfoVO.endEndTime!=''">
+                and end_time &lt;= "${productInfoVO.endEndTime}"
+            </if>
+            <if test="productInfoVO.startProductCount!=null and productInfoVO.startProductCount!=''">
+                and product_count &gt;= "${productInfoVO.startProductCount}"
+            </if>
+            <if test="productInfoVO.endProductCount!=null and productInfoVO.endProductCount!=''">
+                and product_count &lt;= "${productInfoVO.endProductCount}"
+            </if>
+            <if test="productInfoVO.startStockCount!=null and productInfoVO.startStockCount!=''">
+                and stock_count &gt;= "${productInfoVO.startStockCount}"
+            </if>
+            <if test="productInfoVO.endStockCount!=null and productInfoVO.endStockCount!=''">
+                and stock_count &lt;= "${productInfoVO.endStockCount}"
+            </if>
+            <if test="productInfoVO.description!=null and productInfoVO.description!=''">
+                and description like "%${productInfoVO.description}%"
+            </if>
+        </if>
+    </sql>
+
+    <select id="listProduct" parameterType="com.nineboy.seckill.vo.ProductInfoVO" resultType="com.nineboy.seckill.model.ProductInfo">
+        select * from skproduct_info
+      <where>
+          <include refid="consutomsql" ></include>
+      </where>
+    </select>
+</mapper>

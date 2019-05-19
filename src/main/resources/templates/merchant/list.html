@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <center><a href="/merchant/toadd">添加</a> </center>
+    <table border="2">
+        <tr>
+            <td>商家名称</td>
+            <td>商家店铺名称</td>
+            <td>商家账号</td>
+            <td>商家密码</td>
+            <td>商家经营范围</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="merchart:${list}">
+            <td th:utext="${merchart.getMerchantName()}" />,
+            <td th:utext="${merchart.getMerchantShopName()}" />,
+            <td th:utext="${merchart.getMerchantAccount()}" />,
+            <td th:utext="${merchart.getMerchantPassword()}" />,
+            <td th:utext="${merchart.getMerchantScope()}" />
+            <td><a th:href="'/merchant/toupdate?id='+${merchart.getId()}">修改</a>||
+                <a th:href="'/merchant/del?id='+${merchart.getId()}">删除</a>||
+                <a th:href="'/merchant/querybyid?id='+${merchart.getId()}">查看</a> </td>
+        </tr>
+    </table>
+</body>
+</html>

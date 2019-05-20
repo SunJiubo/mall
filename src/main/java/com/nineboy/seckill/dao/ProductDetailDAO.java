@@ -21,8 +21,8 @@ public interface ProductDetailDAO {
     public void insertProductDetail(ProductDetail productDetail);
 
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME,
-            " where id=#{id}"})
-    public ProductDetail queryProductDetailById(int id);
+            " where product_id=#{productId}"})
+    public ProductDetail queryProductDetailByProductId(int productId);
 
     @Update({"update ",TABLE_NAME,
             " set product_place=#{productPlace}, product_name=#{productName}, brand_name=#{brandName}, product_weight=#{productWeight}, specification=#{specification}, product_detail_picture=#{productDetailPicture} where id = #{id}"})

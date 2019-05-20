@@ -16,8 +16,8 @@ public class ProductDetailService {
         productDetailDAO.insertProductDetail(productDetail);
     }
 
-    public ProductDetail queryProductDetailById(int id){
-        return productDetailDAO.queryProductDetailById(id);
+    public ProductDetail queryProductDetailByProductId(int productId){
+        return productDetailDAO.queryProductDetailByProductId(productId);
     }
 
     public void updateProductDetail(ProductDetail productDetail){

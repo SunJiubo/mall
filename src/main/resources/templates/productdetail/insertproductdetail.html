@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/productdetail/insertproductdetail" method="post">
+        <input name="productId" type="hidden" th:value="${productId}">
+        <input name="merchantId" type="hidden" th:value="${merchantId}">
+        商品产地:<input name="productPlace"></br>
+        商品名称:<input name="productName"></br>
+        商品品牌:<input name="brandName"></br>
+        商品重量:<input name="productWeight"></br>
+        规格和包装:<input name="specification"></br>
+        商品详情图片地址:<input name="productDetailPicture"></br>
+        <input type="botton" value="提交" onclick="submit(this)">
+    </form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>

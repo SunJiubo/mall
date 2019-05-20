@@ -41,7 +41,11 @@
                 <a th:href="'/productinfo/toupdateproduct?id='+${productInfo.getId()}">修改</a>||
                 <a th:href="'/productinfo/del?id='+${productInfo.getId()}">删除</a>||
                 <a th:href="'/productinfo/queryproductinfobyid?id='+${productInfo.getId()}">查看</a>||
-                <a th:href="'/productinfo/toupdateproductstate?id='+${productInfo.getId()}">审核</a>
+                <a th:href="'/productinfo/toupdateproductstate?id='+${productInfo.getId()}">审核</a></br>
+                <a th:href="'/productdetail/toinsertproductdetail?productId='+${productInfo.getProductId()}+'&&merchantId='+${productInfo.getMerchantId()}">添加商品详情</a>||
+                <a th:href="'/productdetail/queryproductdetailbyid?productId='+${productInfo.getProductId()}">查看商品详情</a>||
+                <a th:href="'/productdetail/toupdateproductdetail?productId='+${productInfo.getProductId()}">修改商品详情</a>
+
             </td>
         </tr>
     </table>

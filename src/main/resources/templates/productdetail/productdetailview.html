@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        商品产地:<a th:utext="${productDetail.getProductPlace()}" /></br>
+        商品名称:<a th:utext="${productDetail.getProductName()}"/></br>
+        商品品牌:<a th:utext="${productDetail.getBrandName()}"/></br>
+        商品重量:<a th:utext="${productDetail.getProductWeight()}"/></br>
+        规格和包装:<a th:utext="${productDetail.getSpecification()}"/></br>
+        商品详情图片地址:<a th:utext="${productDetail.getProductDetailPicture()}"/></br>
+    </form>
+</body>
+</html>

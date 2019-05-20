@@ -17,19 +17,19 @@ public class ProductDetailTest {
     ProductDetailService productDetailService;
     @Test
     public void test() {
-        ProductDetail p = new ProductDetail();
-        p.setBrandName("nike");
-        p.setMerchantiId(1);
-        p.setProductId(001);
-        p.setProductName("詹姆斯16");
-        p.setProductDetailPicture("www.baidu.com");
-        p.setProductPlace("泰国");
-        p.setProductWeight("300g");
-        p.setSpecification("1双");
+//        ProductDetail p = new ProductDetail();
+//        p.setBrandName("nike");
+//        p.setMerchantiId(1);
+//        p.setProductId(001);
+//        p.setProductName("詹姆斯16");
+//        p.setProductDetailPicture("www.baidu.com");
+//        p.setProductPlace("泰国");
+//        p.setProductWeight("300g");
+//        p.setSpecification("1双");
 //        productDetailService.insertProductDetail(p);
-//        System.out.println(productDetailService.queryProductDetailById(1));
-        p.setId(1);
-        p.setProductWeight("300g");
-        productDetailService.updateProductDetail(p);
+        System.out.println(productDetailService.queryProductDetailByProductId(3));
+//        p.setId(1);
+//        p.setProductWeight("300g");
+//        productDetailService.updateProductDetail(p);
     }
 }

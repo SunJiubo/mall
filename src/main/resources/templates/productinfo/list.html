@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <center><a href="/productinfo/applymsproduct">申请秒杀商品</a> </center>
+    <center><a href="/productinfo/applyproduct">申请秒杀商品</a> </center>
     <table border="2">
         <tr>
             <td>商品id</td>
@@ -37,9 +37,12 @@
             <td th:utext="${productInfo.getProductCount()}" />
             <td th:utext="${productInfo.getStockCount()}" />,
             <td th:utext="${productInfo.getDescription()}" />
-            <td><a th:href="'/merchant/toupdate?id='+${productInfo.getId()}">修改</a>||
-                <a th:href="'/merchant/del?id='+${productInfo.getId()}">删除</a>||
-                <a th:href="'/merchant/querybyid?id='+${productInfo.getId()}">查看</a> </td>
+            <td>
+                <a th:href="'/productinfo/toupdateproduct?id='+${productInfo.getId()}">修改</a>||
+                <a th:href="'/productinfo/del?id='+${productInfo.getId()}">删除</a>||
+                <a th:href="'/productinfo/queryproductinfobyid?id='+${productInfo.getId()}">查看</a>||
+                <a th:href="'/productinfo/toupdateproductstate?id='+${productInfo.getId()}">审核</a>
+            </td>
         </tr>
     </table>
 </body>

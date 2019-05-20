@@ -10,7 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -21,56 +26,100 @@ public class ProductInfoController {
     @Autowired
     ProductInfoService productInfoService;
 
-    @RequestMapping(path = {"/toapplymsproduct"}, method = {RequestMethod.GET})
+    @RequestMapping(path = {"/toapplyproduct"}, method = {RequestMethod.GET})
     public String toApplymsproduct() {
-        return "productinfo/applymsproduct";
+        return "productinfo/applyproduct";
     }
 
-    @RequestMapping(path ={"/applymsproduct"},method = {RequestMethod.GET,RequestMethod.POST})
-    public void applymsproduct(ProductInfo productInfo){
+    @RequestMapping(path ={"/applyproduct"},method = {RequestMethod.GET,RequestMethod.POST})
+    public String applymsproduct(ProductInfo productInfo){
         productInfoService.applyProduct(productInfo);
         System.out.println(productInfo);
-//        return "redirect:querybyvo";
+        return "redirect:listproduct";
     }
 
-//    @RequestMapping(path = {"/toupdate"}, method = {RequestMethod.GET})
-//    public String toupdate(Model model,
-//                           @RequestParam("id") int id) {
-//        Merchant merchant = merchantService.queryMerchantById(id);
-//        System.out.println(merchant);
-//        model.addAttribute("merchant",merchant);
-//        return "merchant/update";
-//    }
-//
-//    @RequestMapping(path = {"/update"}, method = {RequestMethod.GET,RequestMethod.POST})
-//    public String update(Model model,Merchant merchant) {
-//        merchantService.updateMerchant(merchant);
-//        System.out.println(merchant);
-//        return "redirect:querybyvo";
-//    }
-//
-    @RequestMapping(path = {"/listmsproduct"}, method = {RequestMethod.GET})
-    public String listmsproduct(Model model,
+    @RequestMapping(path = {"/toupdateproduct"}, method = {RequestMethod.GET})
+    public String toUpdateProductInfo(Model model,
+                           @RequestParam("id") int id) {
+        ProductInfo productInfo = productInfoService.queryProductInfoById(id);
+        System.out.println(productInfo);
+        Date starttime = productInfo.getStartTime();
+        Date endtime = productInfo.getEndTime();
+        String startTimeString = "";
+        String endTimeString = "";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        if(starttime!=null){
+            startTimeString = dateFormat.format(starttime);
+        }
+        if(endtime!=null){
+            endTimeString = dateFormat.format(endtime);
+        }
+        model.addAttribute("productInfo",productInfo);
+        model.addAttribute("startTimeString",startTimeString);
+        model.addAttribute("endTimeString",startTimeString);
+
+        return "productinfo/updateproduct";
+    }
+
+    @RequestMapping(path = {"/updateproduct"}, method = {RequestMethod.GET,RequestMethod.POST})
+    public String updateProductInfo(Model model,ProductInfo productInfo) {
+        productInfoService.updateProductInfo(productInfo);
+        System.out.println(productInfo);
+        return "redirect:listproduct";
+    }
+
+    @RequestMapping(path = {"/toupdateproductstate"}, method = {RequestMethod.GET})
+    public String toupdateproductstate(Model model,
+                                      @RequestParam("id") int id) {
+        ProductInfo productInfo = productInfoService.queryProductInfoById(id);
+        System.out.println(productInfo);
+        Date starttime = productInfo.getStartTime();
+        Date endtime = productInfo.getEndTime();
+        String startTimeString = "";
+        String endTimeString = "";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        if(starttime!=null){
+            startTimeString = dateFormat.format(starttime);
+        }
+        if(endtime!=null){
+            endTimeString = dateFormat.format(endtime);
+        }
+        model.addAttribute("productInfo",productInfo);
+        model.addAttribute("startTimeString",startTimeString);
+        model.addAttribute("endTimeString",startTimeString);
+
+        return "productinfo/updateproductstate";
+    }
+
+    @RequestMapping(path = {"/updateproductstate"}, method = {RequestMethod.GET,RequestMethod.POST})
+    public String updateProductState(Model model,
+                                     int id , int state) {
+        productInfoService.updateProductState(id ,state);
+        return "redirect:listproduct";
+    }
+
+    @RequestMapping(path = {"/listproduct"}, method = {RequestMethod.GET})
+    public String listproduct(Model model,
                                 ProductInfoVO productInfoVO) {
         List<ProductInfo> list = productInfoService.listProduct(productInfoVO);
         model.addAttribute("list",list);
         return "productinfo/list";
     }
-//
-//    @RequestMapping(path = {"/querybyid"}, method = {RequestMethod.GET})
-//    public String querybyid(Model model,
-//                            @Param("id") int id) {
-//        Merchant merchant = merchantService.queryMerchantById(id);
-//        System.out.println(merchant);
-//        model.addAttribute("merchant",merchant);
-//        return "merchant/view";
-//    }
-//
-//    @RequestMapping(path = {"/del"}, method = {RequestMethod.GET,RequestMethod.POST})
-//    public String del(@RequestParam("id") int id) {
-//        merchantService.deleteMerchantById(id);
-//        return "redirect:querybyvo";
-//    }
+
+    @RequestMapping(path = {"/queryproductinfobyid"}, method = {RequestMethod.GET})
+    public String queryProductInfoById(Model model,
+                            @Param("id") int id) {
+        ProductInfo productInfo = productInfoService.queryProductInfoById(id);
+        System.out.println(productInfo);
+        model.addAttribute("productinfo",productInfo);
+        return "productinfo/view";
+    }
+
+    @RequestMapping(path = {"/del"}, method = {RequestMethod.GET,RequestMethod.POST})
+    public String del(@Param("id") int id) {
+        productInfoService.deleteProductInfoById(id);
+        return "redirect:listproduct";
+    }
 
 //    @RequestMapping(path={"/profile/{groupId}/{userId}"})
 //    @ResponseBody

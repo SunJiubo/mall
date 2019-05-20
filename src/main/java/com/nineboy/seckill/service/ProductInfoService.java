@@ -44,8 +44,26 @@ public class ProductInfoService {
         return productInfoDAO.listProduct(productInfoVO);
     }
 
+    public void updateProductState(int id, int state){
+        ProductInfoVO productInfoVO = new ProductInfoVO();
+        productInfoVO.setId(id);
+        productInfoVO.setAuditState(state);
+        productInfoDAO.updateProductState(productInfoVO);
+    }
 
     public void updateProductInfo(ProductInfo productInfo){
+        String starttime = productInfo.getStartTimeString();//
+        String endtime = productInfo.getEndTimeString();
+        DateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date starttimedate = dateformat.parse(starttime);
+            productInfo.setStartTime(starttimedate);
+            Date endtimedate = dateformat.parse(endtime);
+            productInfo.setEndTime(endtimedate);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         productInfoDAO.updateProductInfo(productInfo);
     }
 

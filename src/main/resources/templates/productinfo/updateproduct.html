@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/productinfo/updateproduct" method="post">
+        <input name="id" th:value="${productInfo.id}" type="hidden">
+        商家名称:<input name="merchantName" th:value="${productInfo.getMerchantId()}"></br>
+        商品id:<input name="productId" th:value="${productInfo.getProductId()}"></br>
+        商品标题:<input name="productTitle" th:value="${productInfo.getProductTitle()}"></br>
+        商品图片地址:<input name="productPicture" th:value="${productInfo.getProductPicture()}"></br>
+        秒杀价格:<input name="seckillPrice" th:value="${productInfo.getSeckillPrice()}"></br>
+        商品原价:<input name="originalPrice" th:value="${productInfo.getOriginalPrice()}"></br>
+        秒杀开始时间:<input name="startTimeString" th:value="${startTimeString}"></br>
+        秒杀结束时间:<input name="endTimeString" th:value="${endTimeString}"></br>
+        秒杀商品数量:<input name="productCount" th:value="${productInfo.getProductCount()}"></br>
+        库存:<input name="stockCount" th:value="${productInfo.getStockCount()}"></br>
+        描述:<input name="description" th:value="${productInfo.getDescription()}"></br>
+        <input type="botton" value="提交" onclick="submit(this)">
+    </form>
+</body>
+<script type="text/javascript">
+    function submit(obj) {
+        obj.parent.submit();
+    }
+</script>
+</html>

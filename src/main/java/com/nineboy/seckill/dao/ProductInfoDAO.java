@@ -25,11 +25,15 @@ public interface ProductInfoDAO {
 
     public List<ProductInfo> listProduct(@Param("productInfoVO") ProductInfoVO productInfoVO);
 
+    @Update({"update ",TABLE_NAME," set audit_state=#{auditState} where id = #{id}"})
+    public void updateProductState(ProductInfoVO productInfoVO);
 
     @Update({"update ",TABLE_NAME,
-            " set product_id=#{productId}, product_title=#{productTitle}, product_picture=#{productPicture}, seckill_price=#{seckillPrice}, original_price=#{originalPrice}, merchant_id=#{merchantId}, apply_date=#{applyDate},audit_date=#{auditDate}, audit_state=#{auditState}, start_time=#{startTime}, end_time=#{endTime}, product_count=#{productCount}, stock_count=#{stockCount}, description=#{description} where id = #{id}"})
+            " set product_title=#{productTitle}, product_picture=#{productPicture}, seckill_price=#{seckillPrice}, original_price=#{originalPrice}, start_time=#{startTime}, end_time=#{endTime}, product_count=#{productCount}, stock_count=#{stockCount}, description=#{description} where id = #{id}"})
     public void updateProductInfo(ProductInfo productInfo);
 
     @Delete({"delete from ", TABLE_NAME, " where id=#{id}"})
     public void deleteProductInfoById(int id);
+
+
 }

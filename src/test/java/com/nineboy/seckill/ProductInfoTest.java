@@ -30,12 +30,13 @@ public class ProductInfoTest {
 //        productInfo.setProductId(3);
 //        productInfoService.updateProductInfo(productInfo);
 //        System.out.println(productInfo);
-        ProductInfoVO productInfoVO = new ProductInfoVO();
-        productInfoVO.setStartSeckillPrice(200);
-        List<ProductInfo> list = productInfoService.listProduct(productInfoVO);
-        for (ProductInfo pro :
-                list) {
-            System.out.println(pro);
-        }
+//        ProductInfoVO productInfoVO = new ProductInfoVO();
+//        productInfoVO.setStartSeckillPrice(200);
+//        List<ProductInfo> list = productInfoService.listProduct(productInfoVO);
+//        for (ProductInfo pro :
+//                list) {
+//            System.out.println(pro);
+//        }
+        productInfoService.updateProductState(5,2);
     }
 }

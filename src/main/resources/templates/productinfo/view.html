@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        秒杀商品的id: <a th:utext="${productinfo.getProductId()}" /></br>
+        秒杀商品的标题: <a th:utext="${productinfo.getProductTitle()}" /></br>
+        秒杀商品的图片地址: <a th:utext="${productinfo.getProductPicture()}" /></br>
+        秒杀商品价格: <a th:utext="${productinfo.getSeckillPrice()}" /></br>
+        商家的id: <a th:utext="${productinfo.getMerchantId()}" /></br>
+        商品原价: <a th:utext="${productinfo.getOriginalPrice()}" /></br>
+        秒杀商品的申请时间: <a th:utext="${productinfo.getApplyDate()}" /></br>
+        秒杀商品的审核时间: <a th:utext="${productinfo.getAuditDate()}" /></br>
+        秒杀的开始时间: <a th:utext="${productinfo.getStartTime()}" /></br>
+        秒杀的结束时间: <a th:utext="${productinfo.getEndTime()}" /></br>
+        秒杀数量: <a th:utext="${productinfo.getProductCount()}" /></br>
+        秒杀的库存: <a th:utext="${productinfo.getStockCount()}" /></br>
+        秒杀的描述: <a th:utext="${productinfo.getDescription()}" /></br>
+    </form>
+</body>
+</html>

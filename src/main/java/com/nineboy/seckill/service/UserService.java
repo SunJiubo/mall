@@ -21,6 +21,10 @@ public class UserService {
         return userDAO.queryUserById(id);
     }
 
+    public User queryUserByAccount(String account){
+        return userDAO.queryUserByAccount(account);
+    }
+
     public List<User> queryUserByVo(UserVO userVO){
         return userDAO.queryUserByVo(userVO);
     }

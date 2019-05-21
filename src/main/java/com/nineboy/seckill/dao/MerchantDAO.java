@@ -21,6 +21,10 @@ public interface MerchantDAO {
             " where id=#{id}"})
     public Merchant queryMerchantById(int id);
 
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME,
+            " where merchant_account=#{merchantAccount}"})
+    public Merchant queryMerchantByAccount(String merchantAccount);
+
     public List<Merchant> queryMerchantByVo(@Param("merchantVO") MerchantVO merchantVO);
 
     @Update({"update ",TABLE_NAME,

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<tr th:if="${session.user}!=null">
+    <a th:utext="${session.user.getName()}"></a></br>
+</tr>
+<a href="/user/toreg">注册</a>||
+<a href="/user/tologin">登陆</a>||
+<a href="/user/exit">退出</a>
+</body>
+</html>

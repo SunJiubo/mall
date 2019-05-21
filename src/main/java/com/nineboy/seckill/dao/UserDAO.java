@@ -26,6 +26,10 @@ public interface UserDAO {
             " where id=#{id}"})
     public User queryUserById(int id);
 
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME,
+            " where account=#{account}"})
+    public User queryUserByAccount(String account);
+
     public List<User> queryUserByVo(@Param("userVO") UserVO userVO);
 
 

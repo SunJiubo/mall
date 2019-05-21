@@ -23,6 +23,10 @@ public class MerchantService {
 
     }
 
+    public Merchant queryMerchantByAccount(String merchantAccount){
+        return merchantDAO.queryMerchantByAccount(merchantAccount);
+    }
+
     public List<Merchant> queryMerchantByVo(MerchantVO merchantVO){
         return merchantDAO.queryMerchantByVo(merchantVO);
     }

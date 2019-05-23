@@ -10,6 +10,20 @@
 </tr>
 <a href="/user/toreg">注册</a>||
 <a href="/user/tologin">登陆</a>||
-<a href="/user/exit">退出</a>
+<a href="/user/exit">退出</a>||
+<a href="/order/queryorderbyuserid" >订单查询</a></br>
+<table border="2">
+    <tr th:each="productInfo:${list}">
+        <td th:utext="${productInfo.getProductTitle()}" />
+        <td th:utext="${productInfo.getProductPicture()}" />
+        <td th:utext="${productInfo.getSeckillPrice()}" />
+        <td th:utext="${productInfo.getOriginalPrice()}" />
+        <td th:utext="${productInfo.getStartTime()}" />
+        <td th:utext="${productInfo.getEndTime()}" />
+        <td>
+            <a th:href="'/homepage/viewproductdetail?id='+${productInfo.getId()}">查看</a>
+        </td>
+    </tr>
+</table>
 </body>
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/order/topayorder">
+    购买数量：<input type="text" name="num" >
+    <input type="hidden" name="id" th:value="${productInfo.getId()}">
+    <table border="1">
+        <tr>
+            <td>商品标题</td>
+            <td>商品图片</td>
+            <td>秒杀价格</td>
+            <td>秒杀原价</td>
+            <td>秒杀开始时间</td>
+            <td>秒杀结束时间</td>
+            <td>秒杀数量</td>
+            <td>库存</td>
+        </tr>
+        <tr>
+            <td th:utext="${productInfo.getProductTitle()}" />
+            <td th:utext="${productInfo.getProductPicture()}" />
+            <td th:utext="${productInfo.getSeckillPrice()}" />
+            <td th:utext="${productInfo.getOriginalPrice()}" />
+            <td th:utext="${productInfo.getStartTime()}" />
+            <td th:utext="${productInfo.getEndTime()}" />
+            <td th:utext="${productInfo.getProductCount()}" />
+            <td th:utext="${productInfo.getStockCount()}" />
+        </tr>
+    </table>
+    <table border="1">
+        <tr>
+            <td>商品产地</td>
+            <td>商品名称</td>
+            <td>商品品牌</td>
+            <td>商品重量</td>
+            <td>规格和包装</td>
+            <td>商品详情图片地址</td>
+        </tr>
+        <tr>
+            <td th:utext="${productDetail.getProductPlace()}" />
+            <td th:utext="${productDetail.getProductName()}"/>
+            <td th:utext="${productDetail.getBrandName()}"/>
+            <td th:utext="${productDetail.getProductWeight()}"/>
+            <td th:utext="${productDetail.getSpecification()}"/>
+            <td th:utext="${productDetail.getProductDetailPicture()}"/>
+        </tr>
+    </table>
+    <input type="button" value="立即购买" onclick="submit(this)"/>
+</form>
+</body>
+<script type="text/javascript">
+    function submit(obj){
+        obj.parent.sumbit();
+    }
+</script>
+</html>

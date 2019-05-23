@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/order/payorder">
+商品名称：<a th:utext=" ${productInfo.getProductTitle()}"></a>
+购买数量：<a th:utext=" ${num}"></a>
+支付总额：<a th:utext=" ${payamount}"></a>
+    <input type="hidden" name="productId" th:value="${productInfo.getId()}">
+    <input type="hidden" name="userId" th:value="${userId}">
+    <input type="hidden" name="merchantId" th:value="${productInfo.getMerchantId()}">
+    <input type="hidden" name="payAmount" th:value="${payamount}">
+    <input type="hidden" name="num" th:value="${num}">
+
+    收货人地址:<input type="text" name="receiverAddress"></br>
+    收货人电话:<input type="text" name="receiverPhone"></br>
+    收货人名称:<input type="text" name="receiverName"></br>
+    <input type="button" value="立即付款" onclick="submit(this)"/>
+</form>
+</body>
+<script type="text/javascript">
+    function submit(obj){
+        obj.parent.sumbit();
+    }
+</script>
+</html>

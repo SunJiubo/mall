@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <center><a href="/merchant/toadd">添加商家</a> </center>
+    <table border="2">
+        <tr>
+            <td>支付金额</td>
+            <td>订单生成时间</td>
+            <td>支付状态</td>
+            <td>收货人地址</td>
+            <td>收货人电话</td>
+            <td>收货人名称</td>
+            <td>交易流水号</td>
+            <td>购买数量</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="order:${list}">
+            <td th:utext="${order.getPayAmount()}"></td>
+            <td th:utext="${order.getCreateTime()}"></td>
+            <td th:utext="${order.getPayStatus()}"></td>
+            <td th:utext="${order.getReceiverAddress()}"></td>
+            <td th:utext="${order.getReceiverPhone()}"></td>
+            <td th:utext="${order.getReceiverName()}"></td>
+            <td th:utext="${order.getTradeserialNumber()}"></td>
+            <td th:utext="${order.getNum()}"></td>
+            <td >
+                <div th:if="${order.getPayStatus()}==1">未支付</div>
+                <div th:if="${order.getPayStatus()}==2">支付完成</div>
+                <div th:if="${order.getPayStatus()}==3">退款成功</div>
+                <div th:if="${order.getPayStatus()}==4">
+                    <!--<input type="button" th:value="退款审核通过" th:onclick="'applyrefund('+[[${order.getTradeserialNumber()}]]+','+${order.getPayAmount()}+','+${order.getId()}+','+${order.getPayType()}+',3)'">-->
+                    <!--<input type="button" th:value="退款审核不通过" th:onclick="'applyrefund('+[[${order.getTradeserialNumber()}]]+','+${order.getPayAmount()}+','+${order.getId()}+','+${order.getPayType()}+',5)'">-->
+                    <input type="button" th:value="退款审核通过" th:onclick="applyrefund([[${order.getTradeserialNumber()}]],[[${order.getPayAmount()}]],[[${order.getId()}]],[[${order.getPayType()}]],3)">
+                    <input type="button" th:value="退款审核不通过" th:onclick="applyrefund([[${order.getTradeserialNumber()}]],[[${order.getPayAmount()}]],[[${order.getId()}]],[[${order.getPayType()}]],5)">
+                </div>
+                    <!--<input type="button" th:value="${order.getTradeserialNumber()}" th:onclick="applyrefund([[${order.getTradeserialNumber()}]],${order.getPayAmount()},${order.getId()},${order.getPayType()},${order.getPayStatus()})|"></div>-->
+
+                <div th:if="${order.getPayStatus()}==5">退款申请不成功</div>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        function applyrefund(tradeserialnumber,payamount,orderid,paytype,paystatus){
+            window.location.href="auditrefund?tradeserialNumber="+tradeserialnumber+"&&payAmount="+payamount+"&&id="+orderid+"&&payType="+paytype+"&&payStatus="+paystatus;
+        }
+        // function applyrefund(orderid,paytype){
+        //     window.location.href="applyrefund?id="+orderid+"&&payType="+paytype;
+        // }
+    </script>
+</body>
+</html>

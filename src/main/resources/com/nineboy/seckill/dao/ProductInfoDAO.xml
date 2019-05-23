@@ -26,31 +26,32 @@
                 and merchant_id = "${productInfoVO.merchantId}"
             </if>
             <if test="productInfoVO.startApplyDate!=null and productInfoVO.startApplyDate!=''">
-                and apply_date &gt;= "${productInfoVO.startApplyDate}"
+                and apply_date &gt;= STR_TO_DATE(#{productInfoVO.startApplyDate},'%Y-%m-%d %H:%i:%S')
             </if>
             <if test="productInfoVO.endApplyDate!=null and productInfoVO.endApplyDate!=''">
-                and apply_date &lt;= "${productInfoVO.endApplyDate}"
+                and apply_date &lt;= STR_TO_DATE(#{productInfoVO.endApplyDate},'%Y-%m-%d %H:%i:%S')
             </if>
             <if test="productInfoVO.startAuditDate!=null and productInfoVO.startAuditDate!=''">
-                and audit_date &gt;= "${productInfoVO.startAuditDate}"
+                and audit_date &gt;= STR_TO_DATE(#{productInfoVO.startAuditDate},'%Y-%m-%d %H:%i:%S')
             </if>
             <if test="productInfoVO.endAuditDate!=null and productInfoVO.endAuditDate!=''">
-                and audit_date &lt;= "${productInfoVO.endAuditDate}"
+                and audit_date &lt;= STR_TO_DATE(#{productInfoVO.endAuditDate},'%Y-%m-%d %H:%i:%S')
             </if>
             <if test="productInfoVO.auditState!=null and productInfoVO.auditState!=''">
                 and audit_state = "${productInfoVO.auditState}"
             </if>
             <if test="productInfoVO.startStartTime!=null and productInfoVO.startStartTime!=''">
-                and start_time &gt;= "${productInfoVO.startStartTime}"
+                and start_time &gt;= STR_TO_DATE(#{productInfoVO.startStartTime},'%Y-%m-%d %H:%i:%S')
             </if>
             <if test="productInfoVO.endStartTime!=null and productInfoVO.endStartTime!=''">
-                and start_time &lt;= "${productInfoVO.endStartTime}"
+                and start_time &lt;= STR_TO_DATE(#{productInfoVO.endStartTime},'%Y-%m-%d %H:%i:%S')
             </if>
             <if test="productInfoVO.startEndTime!=null and productInfoVO.startEndTime!=''">
-                and end_time &gt;= "${productInfoVO.startEndTime}"
+                and end_time &gt;= STR_TO_DATE(#{productInfoVO.startEndTime},'%Y-%m-%d %H:%i:%S')
+
             </if>
             <if test="productInfoVO.endEndTime!=null and productInfoVO.endEndTime!=''">
-                and end_time &lt;= "${productInfoVO.endEndTime}"
+                and end_time &lt;= STR_TO_DATE(#{productInfoVO.endEndTime},'%Y-%m-%d %H:%i:%S')
             </if>
             <if test="productInfoVO.startProductCount!=null and productInfoVO.startProductCount!=''">
                 and product_count &gt;= "${productInfoVO.startProductCount}"

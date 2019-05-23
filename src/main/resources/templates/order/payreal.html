@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/order/paywithorder">
+支付方式:
+    支付宝:<input type="radio" name="payType" value="1" />
+    微信:<input type="radio" name="payType" value="2" />
+    银联:<input type="radio" name="payType" value="3" /></br>
+支付总额:<a th:utext="${payAmount}"></a>
+流水号:<a th:utext="${tradeserialNumber}"></a>
+    <input type="hidden" name="id" th:value="${id}">
+    <input type="hidden" name="tradeserialNumber" th:value="${tradeserialNumber}">
+    <input type="hidden" name="payAmount" th:value="${payAmount}"></br>
+
+    <input type="button" value="立即付款" onclick="submit(this)"/>
+</form>
+</body>
+<script type="text/javascript">
+    function submit(obj){
+        obj.parent.sumbit();
+    }
+</script>
+</html>

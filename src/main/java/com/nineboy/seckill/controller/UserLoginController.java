@@ -2,6 +2,7 @@ package com.nineboy.seckill.controller;
 
 import com.nineboy.seckill.model.User;
 import com.nineboy.seckill.service.UserService;
+import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -38,7 +40,13 @@ public class UserLoginController {
     }
 
     @RequestMapping(value = "tologin")
-    public String tologin() {
+    public String tologin(
+            @RequestParam(value = "next", required= false) String next,
+                          Model model) {
+        if(StringUtils.isNotBlank(next)){
+            model.addAttribute("next",next);
+            System.out.println(next);
+        }
         return "user/login";
     }
 
@@ -46,6 +54,7 @@ public class UserLoginController {
     public String login(HttpServletRequest req,
                         @RequestParam(value = "account") String account,
                         @RequestParam(value = "password") String password,
+                        @RequestParam(value = "next", required= false) String next,
                         Model model) {
         String r1 = "homepage/error";
         String err = "";
@@ -63,7 +72,12 @@ public class UserLoginController {
         }else {
             HttpSession sess = req.getSession();
             sess.setAttribute("user", user);
-            r1 = "homepage/home";
+//            if(StringUtils.isNotBlank(next)){
+//                r1 = "redirect:";
+//            }else{
+                r1 = "homepage/home";
+//            }
+//
         }
         return r1;
     }

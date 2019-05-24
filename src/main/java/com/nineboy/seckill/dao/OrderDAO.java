@@ -20,7 +20,7 @@ public interface OrderDAO {
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
 
     @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS,
-            ") values (#{productId},#{payAmount},#{userId},#{merchantId},#{createTime},#{payStatus},#{receiverAddress},#{receiverPhone},#{receiverName},#{tradeserialNumber},#{num})"})
+            ") values (#{productId},#{payAmount},#{userId},#{merchantId},#{createTime},#{payStatus},#{receiverAddress},#{receiverPhone},#{receiverName},#{tradeserialNumber},#{num},#{payType})"})
     public void insertOrder(Order order);
 
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME,

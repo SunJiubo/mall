@@ -21,7 +21,7 @@
         <td th:utext="${productInfo.getStartTime()}" />
         <td th:utext="${productInfo.getEndTime()}" />
         <td>
-            <a th:href="'/homepage/viewproductdetail?id='+${productInfo.getId()}">查看</a>
+            <a th:href="'/homepage/viewproductdetail?id='+${productInfo.getProductId()}">查看</a>
         </td>
     </tr>
 </table>

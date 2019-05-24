@@ -37,7 +37,7 @@ public class HomeController {
         Date now = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String nowString = dateFormat.format(now);
-        productInfoVO.setStartEndTime("2019-05-23");
+        productInfoVO.setStartEndTime(nowString);
         productInfoVO.setAuditState(2);
         List<ProductInfo> list = productInfoService.listProduct(productInfoVO);
         model.addAttribute("list",list);
